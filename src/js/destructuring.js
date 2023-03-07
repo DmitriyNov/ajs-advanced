@@ -1,8 +1,7 @@
-export default function getSpecialAttack({special, special: [{}, {description = 'Описание недоступно'}] } = obj) {
-  // Код просто чтобы тест проходить, я не понимаю, как правильно выполнить задачу
-  special[1].description = description;
-  return special;
+export default function getSpecialAttack({ special } = obj) {
+  return special.map((element) => {
+    const { description = 'Описание недоступно' } = element;
+    element.description = description;
+    return element;
+  });
 }
-// Честно, я вообще не понял, как сделать деструктуризацию в аргументе в соответствии с условием.
-// У нас в описании объект у которого в свойстве special массив из двух объектов, как для двух объектов задать значение по умолчанию в одинаковых свойствах?
-// Тогда нужно в отдельные переменные определять эти значения, а если в свойстве special будет массив из трёх объектов, как это предусмотреть?
